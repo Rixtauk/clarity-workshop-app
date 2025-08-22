@@ -2,6 +2,12 @@
 
 This is the landing page and e-commerce platform for The Clarity Workshop.
 
+🚀 **Live Site**: https://clarity-workshop-landing.vercel.app/
+
+## Auto-Deployment
+
+This project is automatically deployed to Vercel on every push to the `main` branch.
+
 ## Stripe Test Mode Setup
 
 This project uses Stripe for payment processing. To properly test the payment flow:
