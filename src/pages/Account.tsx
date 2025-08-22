@@ -163,7 +163,7 @@ export default function Account() {
                   <p className="text-gray-500 mb-4">You haven't made any purchases yet.</p>
                   <Link
                     to="/checkout"
-                    className="inline-flex items-center gap-2 bg-[#2f3857] text-white px-6 py-2 rounded-lg font-semibold transition-all duration-300 hover:bg-[#3b435d]"
+                    className="inline-flex items-center gap-2 dark-cta text-white px-6 py-2 rounded-lg font-semibold gentle-bounce"
                   >
                     Browse Products
                   </Link>

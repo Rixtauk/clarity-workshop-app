@@ -18,16 +18,16 @@ export default function Workshop() {
   return (
     <section className="bg-[#2f3857] text-white py-16">
       <div className="container mx-auto px-4">
-        <h2 className="text-4xl font-bold text-center mb-4 tracking-tight uppercase font-['Helvetica Neue']">
-          IS THIS WORKSHOP RIGHT FOR YOU?
+        <h2 className="heading-lg text-center mb-4">
+          Is This Workshop Right for You?
         </h2>
-        <p className="text-[#c8b6a6] text-2xl font-bold text-center mb-16 uppercase tracking-tight">
-          Find Out If This Is Your Next Step
+        <p className="text-[#c8b6a6] subheading text-center mb-16">
+          Find out if this is your next step
         </p>
         
         <div className="grid md:grid-cols-2 gap-12 max-w-5xl mx-auto">
           <div className="bg-white/10 p-8 rounded-xl shadow-[0_20px_50px_rgba(0,_0,_0,_0.3)] hover:shadow-[0_30px_60px_rgba(0,_0,_0,_0.4)] transition-all duration-500 hover:-translate-y-2 backdrop-blur-sm">
-            <h3 className="text-2xl font-semibold mb-8 flex items-center gap-3">
+            <h3 className="heading-md font-medium mb-8 flex items-center gap-3">
               <Check className="w-8 h-8 text-green-400" />
               Perfect For:
             </h3>
@@ -35,14 +35,14 @@ export default function Workshop() {
               {idealFor.map((item, index) => (
                 <li key={index} className="flex items-center gap-3">
                   <Check className="w-5 h-5 text-green-400 flex-shrink-0 transform group-hover:scale-110 transition-transform duration-300" />
-                  <span>{item}</span>
+                  <span className="body-text">{item}</span>
                 </li>
               ))}
             </ul>
           </div>
 
           <div className="bg-white/10 p-8 rounded-xl shadow-[0_20px_50px_rgba(0,_0,_0,_0.3)] hover:shadow-[0_30px_60px_rgba(0,_0,_0,_0.4)] transition-all duration-500 hover:-translate-y-2 backdrop-blur-sm">
-            <h3 className="text-2xl font-semibold mb-8 flex items-center gap-3">
+            <h3 className="heading-md font-medium mb-8 flex items-center gap-3">
               <X className="w-8 h-8 text-red-400" />
               Not For:
             </h3>
@@ -50,7 +50,7 @@ export default function Workshop() {
               {notFor.map((item, index) => (
                 <li key={index} className="flex items-center gap-3">
                   <X className="w-5 h-5 text-red-400 flex-shrink-0 transform group-hover:scale-110 transition-transform duration-300" />
-                  <span>{item}</span>
+                  <span className="body-text">{item}</span>
                 </li>
               ))}
             </ul>

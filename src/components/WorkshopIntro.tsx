@@ -45,11 +45,11 @@ export default function WorkshopIntro() {
   return (
     <section className="bg-[#2f3857] text-white py-12">
       <div className="container mx-auto px-4">
-        <div className="max-w-3xl mx-auto text-center mb-16 font-['Helvetica Neue']">
-          <h2 className="text-4xl font-bold text-white mb-4 tracking-tight uppercase font-['Helvetica Neue']">
-            YOUR 3-STEP JOURNEY TO CLARITY
+        <div className="max-w-3xl mx-auto text-center mb-16">
+          <h2 className="heading-lg text-white mb-4">
+            Your 3-Step Journey to Clarity
           </h2>
-          <p className="text-[#c8b6a6] text-2xl font-bold uppercase tracking-tight mb-16">
+          <p className="text-[#c8b6a6] subheading mb-16">
             Here is what you'll experience:
           </p>
         </div>
@@ -64,17 +64,17 @@ export default function WorkshopIntro() {
             >
               <div className="md:w-1/2">
                 <div className="bg-white/10 p-8 rounded-xl shadow-[0_20px_50px_rgba(0,_0,_0,_0.3)] hover:shadow-[0_30px_60px_rgba(0,_0,_0,_0.4)] transition-all duration-500 hover:-translate-y-2 backdrop-blur-sm">
-                  <h3 className="text-2xl font-semibold mb-8 flex items-center gap-4">
+                  <h3 className="heading-md mb-8 flex items-center gap-4">
                     <div className="bg-[#3a435d] w-12 h-12 rounded-full flex items-center justify-center transform hover:scale-110 transition-transform duration-500 flex-shrink-0">
                       <module.icon className="w-6 h-6 text-white" />
                     </div>
-                    {module.title.toUpperCase()}
+                    {module.title}
                   </h3>
                   <div className="text-white space-y-4">
                     {module.description.map((item, i) => (
                       <div key={i} className="flex items-start gap-3">
                         <span className="w-2 h-2 bg-[#c8b6a6] rounded-full flex-shrink-0 mt-2" />
-                        <span className="text-left">{item}</span>
+                        <span className="body-text text-left">{item}</span>
                       </div>
                     ))}
                   </div>

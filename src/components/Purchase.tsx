@@ -20,15 +20,15 @@ export default function Purchase() {
   ];
 
   return (
-    <section id="pricing" className="bg-white py-24">
+    <section id="pricing" className="bg-gradient-section-light py-24">
       <div className="container mx-auto px-4">
         <div className="max-w-4xl mx-auto text-center transform hover:-translate-y-2 transition-all duration-500">
-          <div className="bg-[#2f3857] text-white p-12 rounded-2xl shadow-[0_20px_50px_rgba(0,_0,_0,_0.3)] hover:shadow-[0_30px_60px_rgba(0,_0,_0,_0.4)] transition-all duration-500">
+          <div className="bg-[#2f3857] text-white p-12 rounded-2xl shadow-[0_20px_50px_rgba(0,_0,_0,_0.3)] hover:shadow-[0_30px_60px_rgba(0,_0,_0,_0.4)] transition-all duration-500 gradient-overlay-navy">
             {/* Title and Image Row */}
             <div className="flex flex-col md:flex-row gap-8 items-start mb-8">
               {/* Left: Title and Price */}
               <div className="md:w-1/2 text-left">
-                <h2 className="text-4xl font-bold mb-4 tracking-tight uppercase font-['Helvetica Neue']">
+                <h2 className="heading-lg mb-4">
                   The Clarity Workshop
                 </h2>
                 <div className="flex items-center gap-4 mb-6">
@@ -39,11 +39,13 @@ export default function Purchase() {
               
               {/* Right: Image */}
               <div className="md:w-1/2">
-                <img
-                  src="https://www.dropbox.com/scl/fi/677xkcp55jhse3qgjcyd5/clarity-workshop-thumbnail.jpg?rlkey=hg9kpsbt2bloj7962v9scoxb9&st=w44z4yar&raw=1"
-                  alt="The Clarity Workshop Preview"
-                  className="rounded-xl shadow-2xl transform transition-all duration-500 hover:scale-105 w-full"
-                />
+                <div className="image-gradient-overlay rounded-xl">
+                  <img
+                    src="https://www.dropbox.com/scl/fi/677xkcp55jhse3qgjcyd5/clarity-workshop-thumbnail.jpg?rlkey=hg9kpsbt2bloj7962v9scoxb9&st=w44z4yar&raw=1"
+                    alt="The Clarity Workshop Preview"
+                    className="rounded-xl shadow-2xl transform transition-all duration-500 hover:scale-105 w-full"
+                  />
+                </div>
               </div>
             </div>
             
@@ -55,7 +57,7 @@ export default function Purchase() {
                   {benefitFeatures.map((feature, index) => (
                     <li key={index} className="flex items-center gap-3">
                       <Check className="w-5 h-5 text-green-400 flex-shrink-0" />
-                      <span>{feature}</span>
+                      <span className="body-text">{feature}</span>
                     </li>
                   ))}
                 </ul>
@@ -67,7 +69,7 @@ export default function Purchase() {
                   {packageFeatures.map((feature, index) => (
                     <li key={index} className="flex items-center gap-3">
                       <Check className="w-5 h-5 text-green-400 flex-shrink-0" />
-                      <span>{feature}</span>
+                      <span className="body-text">{feature}</span>
                     </li>
                   ))}
                 </ul>
@@ -77,10 +79,10 @@ export default function Purchase() {
             {/* Centered CTA Button */}
             <Link 
               to="/checkout"
-              className="bg-[#fd7f4f] text-white px-8 py-4 rounded-full font-semibold text-xl transition-all duration-300 flex items-center justify-center gap-2 w-full max-w-md mx-auto shadow-lg hover:shadow-xl pulse-on-hover"
+              className="vibrant-cta text-white px-8 py-4 rounded-full font-medium text-xl flex items-center justify-center gap-2 w-full max-w-md mx-auto gentle-bounce"
             >
-              Start your clarity journey today
-              <ArrowRight className="w-5 h-5" />
+              Start Your Clarity Journey Today
+              <ArrowRight className="w-5 h-5 arrow-icon" />
             </Link>
           </div>
         </div>

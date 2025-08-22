@@ -31,7 +31,7 @@ export default function ExitPopup({ isOpen, onClose }: ExitPopupProps) {
           
           <a
             href="https://clarity-workshop-questionnaire.netlify.app/"
-            className="block w-full bg-[#2f3857] text-white text-center py-3 px-6 rounded-lg font-semibold hover:bg-[#3b435d] transition-colors duration-300"
+            className="block w-full dark-cta text-white text-center py-3 px-6 rounded-lg font-semibold gentle-bounce"
             target="_blank"
             rel="noopener noreferrer"
             onClick={onClose}

@@ -1,7 +1,41 @@
-import React from 'react';
+import React, { useRef, useEffect } from 'react';
 import { Star } from 'lucide-react';
+import { motion } from 'framer-motion';
+import { useScrollAnimation, useStaggeredAnimation } from '../hooks/useScrollAnimation';
 
 export default function Reviews() {
+  // Animation hooks
+  const titleAnimation = useScrollAnimation({
+    animationType: 'slide',
+    direction: 'up',
+    duration: 0.8
+  });
+  
+  const reviewCards = useStaggeredAnimation(4, 0.3, 0.2);
+  
+  // Mouse tracking for tilt effect
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    const card = e.currentTarget;
+    const rect = card.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    
+    const centerX = rect.width / 2;
+    const centerY = rect.height / 2;
+    
+    const tiltX = (y - centerY) / centerY * -15;
+    const tiltY = (x - centerX) / centerX * 15;
+    
+    card.style.setProperty('--tilt-x', `${tiltX}deg`);
+    card.style.setProperty('--tilt-y', `${tiltY}deg`);
+  };
+  
+  const handleMouseLeave = (e: React.MouseEvent<HTMLDivElement>) => {
+    const card = e.currentTarget;
+    card.style.setProperty('--tilt-x', '0deg');
+    card.style.setProperty('--tilt-y', '0deg');
+  };
+  
   const reviews = [
     {
       name: "Jermaine",
@@ -40,51 +74,90 @@ export default function Reviews() {
   ];
 
   return (
-    <section className="bg-[#f5f5f5] py-24">
+    <section className="bg-gradient-testimonial py-24 overflow-hidden">
       <div className="container mx-auto px-4">
-        <h2 className="text-4xl font-bold text-center text-[#2f3857] mb-16 tracking-tight uppercase">
-          <span className="bg-[#fd7f4f] text-black px-4 py-1 rounded-lg inline-block transform -rotate-2">SUCCESS</span> STORIES FROM THE LAST 3 MONTHS
-        </h2>
+        <motion.h2 
+          ref={titleAnimation.ref}
+          {...titleAnimation.motionProps}
+          className="heading-lg text-center text-[#2f3857] mb-16 gpu-accelerated"
+        >
+          <span className="bg-gradient-to-r from-[#fd7f4f] to-[#ff6b9d] text-black px-4 py-1 rounded-lg inline-block transform -rotate-2 animate-gradient-x hover-lift">Success</span> Stories from the Last 3 Months
+        </motion.h2>
         
         <div className="grid md:grid-cols-2 lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
           {reviews.map((review, index) => (
-            <div 
-              key={index} 
-              className="bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-all duration-500 hover:-translate-y-1 relative overflow-hidden"
+            <motion.div 
+              key={index}
+              ref={reviewCards[index].ref}
+              {...reviewCards[index].motionProps}
+              className="testimonial-card-3d tilt-follow gpu-optimized"
+              onMouseMove={handleMouseMove}
+              onMouseLeave={handleMouseLeave}
             >
-              <div className="absolute top-0 left-0 w-2 h-full bg-[#2f3857]" />
-              <div className="flex items-center gap-2 mb-4">
-                {[...Array(5)].map((_, i) => (
-                  <Star key={i} className="w-5 h-5 fill-current text-yellow-400" />
-                ))}
-              </div>
-              <p className="text-gray-600 mb-8 leading-relaxed">
-                {review.text}
-                <strong className="text-black">
-                  {review.highlight}
-                </strong>
-                {review.textAfter}
-                {review.highlight2 && (
-                  <>
-                    <strong className="text-black">
-                      {review.highlight2}
-                    </strong>
-                    {review.textAfter2}
-                  </>
-                )}
-              </p>
-              <div className="flex items-center gap-4">
-                <img
-                  src={review.image}
-                  alt={review.name}
-                  className="w-14 h-14 rounded-full object-cover border-2 border-[#2f3857]"
-                />
-                <div>
-                  <h4 className="font-bold text-[#2f3857] text-lg">{review.name}</h4>
-                  <p className="text-[#2f3857] font-medium opacity-80">{review.role}</p>
+              <div className="testimonial-inner p-8 depth-shadow-hover testimonial-enhanced testimonial-premium light-ray-effect particle-field">
+                {/* Quote Mark */}
+                <div className="quote-mark">"</div>
+                
+                {/* Animated gradient accent */}
+                <div className="absolute top-0 left-0 w-2 h-full bg-gradient-to-b from-[#fd7f4f] to-[#ff6b9d] glow-layer-1" />
+                
+                {/* Particle Effects */}
+                <div className="particle"></div>
+                <div className="particle"></div>
+                <div className="particle"></div>
+                
+                {/* Star Rating with Shimmer */}
+                <div className="stars-container flex items-center gap-2 mb-6 magnetic-hover">
+                  {[...Array(5)].map((_, i) => (
+                    <Star 
+                      key={i} 
+                      className="star-shimmer w-5 h-5 fill-current text-yellow-400 transition-all duration-300 glow-trail" 
+                      style={{'--star-index': i} as React.CSSProperties}
+                    />
+                  ))}
                 </div>
+                
+                {/* Review Text with Reveal Effect */}
+                <p className="body-text text-gray-600 mb-8 text-reveal leading-relaxed depth-layer-1">
+                  {review.text}
+                  <strong className="text-black font-medium hover-underline bg-gradient-to-r from-[#fd7f4f] to-[#ff6b9d] bg-clip-text text-transparent text-lift">
+                    {review.highlight}
+                  </strong>
+                  {review.textAfter}
+                  {review.highlight2 && (
+                    <>
+                      <strong className="text-black font-medium hover-underline bg-gradient-to-r from-[#fd7f4f] to-[#ff6b9d] bg-clip-text text-transparent text-lift">
+                        {review.highlight2}
+                      </strong>
+                      {review.textAfter2}
+                    </>
+                  )}
+                </p>
+                
+                {/* Profile Section with 3D Effects */}
+                <div className="flex items-center gap-4 depth-layer-2">
+                  <div className="profile-image-3d profile-border-animated">
+                    <img
+                      src={review.image}
+                      alt={review.name}
+                      className="w-16 h-16 rounded-full object-cover border-2 border-[#2f3857] glow-layer-2 transition-all duration-400 holographic"
+                    />
+                  </div>
+                  <div className="flex-1">
+                    <h4 className="font-semibold text-[#2f3857] subheading text-reveal text-lift">{review.name}</h4>
+                    <p className="text-[#2f3857] body-text opacity-80 text-reveal">{review.role}</p>
+                  </div>
+                </div>
+                
+                {/* Enhanced Floating Effects */}
+                <div className="absolute -top-4 -right-4 w-16 h-16 bg-gradient-to-r from-[#fd7f4f]/20 to-[#ff6b9d]/20 rounded-full blur-xl animate-float opacity-50"></div>
+                <div className="absolute -bottom-2 -left-2 w-8 h-8 bg-gradient-to-r from-[#ff6b9d]/15 to-[#ff8c42]/15 rounded-full blur-lg animate-float opacity-40" style={{animationDelay: '2s'}}></div>
+                
+                {/* Subtle sparkle effects */}
+                <div className="absolute top-6 right-8 w-1 h-1 bg-[#fd7f4f] rounded-full opacity-60 animate-pulse"></div>
+                <div className="absolute bottom-10 left-6 w-0.5 h-0.5 bg-[#ff6b9d] rounded-full opacity-50 animate-pulse" style={{animationDelay: '1.5s'}}></div>
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>

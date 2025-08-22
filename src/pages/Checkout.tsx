@@ -80,7 +80,7 @@ export default function Checkout() {
           <div className="flex flex-col gap-4">
             <Link
               to="/account"
-              className="bg-[#2f3857] text-white px-6 py-3 rounded-lg font-semibold transition-all duration-300 hover:bg-[#3b435d]"
+              className="dark-cta text-white px-6 py-3 rounded-lg font-semibold gentle-bounce"
             >
               Go to My Account
             </Link>

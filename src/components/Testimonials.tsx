@@ -1,7 +1,30 @@
-import React from 'react';
+import React, { useRef, useEffect } from 'react';
 import { Star } from 'lucide-react';
 
 export default function Testimonials() {
+  // Mouse tracking for tilt effect
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    const card = e.currentTarget;
+    const rect = card.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    
+    const centerX = rect.width / 2;
+    const centerY = rect.height / 2;
+    
+    const tiltX = (y - centerY) / centerY * -12;
+    const tiltY = (x - centerX) / centerX * 12;
+    
+    card.style.setProperty('--tilt-x', `${tiltX}deg`);
+    card.style.setProperty('--tilt-y', `${tiltY}deg`);
+  };
+  
+  const handleMouseLeave = (e: React.MouseEvent<HTMLDivElement>) => {
+    const card = e.currentTarget;
+    card.style.setProperty('--tilt-x', '0deg');
+    card.style.setProperty('--tilt-y', '0deg');
+  };
+
   const testimonials = [
     {
       text: "The Digital Coaching Retreat was a game-changer for me. Before joining, I felt lost and overwhelmed, unsure of my true goals and potential. Within just two weeks, I gained incredible clarity about what I really wanted in both my personal and professional life and realised I had been stuck for a while without even noticing.",
@@ -30,35 +53,71 @@ export default function Testimonials() {
   ];
 
   return (
-    <section className="bg-[#f5f5f5] py-12">
+    <section className="bg-gradient-section-light py-12">
       <div className="container mx-auto px-4">
-        <h2 className="text-4xl font-bold text-center text-[#2f3857] mb-16 tracking-tight uppercase">
-          SUCCESS STORIES
+        <h2 className="heading-lg text-center text-[#2f3857] mb-16">
+          Success Stories
         </h2>
         
         <div className="grid md:grid-cols-2 lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
           {testimonials.map((testimonial, index) => (
             <div 
-              key={index} 
-              className="bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-all duration-500 hover:-translate-y-1 relative overflow-hidden"
+              key={index}
+              className="testimonial-card-3d tilt-follow gpu-optimized"
+              onMouseMove={handleMouseMove}
+              onMouseLeave={handleMouseLeave}
             >
-              <div className="absolute top-0 left-0 w-2 h-full bg-[#2f3857]" />
-              <div className="flex items-center gap-2 mb-4">
-                {[...Array(5)].map((_, i) => (
-                  <Star key={i} className="w-5 h-5 fill-current text-yellow-400" />
-                ))}
-              </div>
-              <p className="text-gray-600 mb-8 leading-relaxed">{testimonial.text}</p>
-              <div className="flex items-center gap-4">
-                <img
-                  src={testimonial.image}
-                  alt={testimonial.author}
-                  className="w-14 h-14 rounded-full object-cover border-2 border-[#2f3857]"
-                />
-                <div>
-                  <h4 className="font-bold text-[#2f3857] text-lg">{testimonial.author}</h4>
-                  <p className="text-[#c8b6a6] font-medium">{testimonial.role}</p>
+              <div className="testimonial-inner p-8 depth-shadow-hover testimonial-enhanced testimonial-premium light-ray-effect particle-field morph-border">
+                {/* Quote Mark */}
+                <div className="quote-mark">"</div>
+                
+                {/* Animated gradient accent */}
+                <div className="absolute top-0 left-0 w-2 h-full bg-gradient-to-b from-[#fd7f4f] to-[#ff6b9d] glow-layer-1" />
+                
+                {/* Particle Effects */}
+                <div className="particle"></div>
+                <div className="particle"></div>
+                <div className="particle"></div>
+                
+                {/* Star Rating with Shimmer */}
+                <div className="stars-container flex items-center gap-2 mb-6 magnetic-hover">
+                  {[...Array(5)].map((_, i) => (
+                    <Star 
+                      key={i} 
+                      className="star-shimmer w-5 h-5 fill-current text-yellow-400 transition-all duration-300 glow-trail" 
+                      style={{'--star-index': i} as React.CSSProperties}
+                    />
+                  ))}
                 </div>
+                
+                {/* Review Text with Reveal Effect */}
+                <p className="body-text text-gray-600 mb-8 text-reveal leading-relaxed depth-layer-1">
+                  {testimonial.text}
+                </p>
+                
+                {/* Profile Section with 3D Effects */}
+                <div className="flex items-center gap-4 depth-layer-2">
+                  <div className="profile-image-3d profile-border-animated">
+                    <img
+                      src={testimonial.image}
+                      alt={testimonial.author}
+                      className="w-16 h-16 rounded-full object-cover border-2 border-[#2f3857] glow-layer-2 transition-all duration-400 glass-shadow"
+                    />
+                  </div>
+                  <div className="flex-1">
+                    <h4 className="font-semibold text-[#2f3857] subheading text-reveal text-lift">{testimonial.author}</h4>
+                    <p className="text-[#2f3857] body-text opacity-80 text-reveal">{testimonial.role}</p>
+                  </div>
+                </div>
+                
+                {/* Enhanced Floating Effects */}
+                <div className="absolute -top-4 -right-4 w-16 h-16 bg-gradient-to-r from-[#fd7f4f]/20 to-[#ff6b9d]/20 rounded-full blur-xl animate-float opacity-50"></div>
+                <div className="absolute -bottom-2 -left-2 w-10 h-10 bg-gradient-to-r from-[#ff8c42]/15 to-[#fd7f4f]/15 rounded-full blur-lg animate-float opacity-30" style={{animationDelay: '1.5s'}}></div>
+                
+                {/* Premium sparkle effects */}
+                <div className="absolute top-4 left-4 w-2 h-2 bg-[#fd7f4f] rounded-full opacity-40 animate-pulse glow-trail"></div>
+                <div className="absolute bottom-6 right-6 w-1 h-1 bg-[#ff6b9d] rounded-full opacity-50 animate-pulse" style={{animationDelay: '1s'}}></div>
+                <div className="absolute top-1/3 right-4 w-0.5 h-0.5 bg-[#ff8c42] rounded-full opacity-30 animate-pulse" style={{animationDelay: '2.5s'}}></div>
               </div>
             </div>
           ))}

@@ -104,3 +104,4 @@ temp/
 # Supabase
 .branches
 .temp
+.vercel

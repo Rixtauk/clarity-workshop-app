@@ -60,13 +60,13 @@ export default function ImageSlider({ image, alt }: ImageSliderProps) {
       <div className="absolute inset-x-0 bottom-8 flex justify-between px-4 z-10">
         <button
           onClick={() => handleButtonClick(0)}
-          className="bg-[#2f3857] text-white px-4 py-2 text-sm md:px-6 md:py-3 md:text-base rounded-full font-semibold shadow-lg hover:bg-[#3b435d] transition-all duration-500 transform hover:scale-105"
+          className="dark-cta text-white px-4 py-2 text-sm md:px-6 md:py-3 md:text-base rounded-full font-semibold gentle-bounce"
         >
           Without Clarity
         </button>
         <button
           onClick={() => handleButtonClick(100)}
-          className="bg-[#2f3857] text-white px-4 py-2 text-sm md:px-6 md:py-3 md:text-base rounded-full font-semibold shadow-lg hover:bg-[#3b435d] transition-all duration-500 transform hover:scale-105"
+          className="dark-cta text-white px-4 py-2 text-sm md:px-6 md:py-3 md:text-base rounded-full font-semibold gentle-bounce"
         >
           With Clarity
         </button>

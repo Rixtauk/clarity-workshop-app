@@ -30,13 +30,13 @@ const pressClippings = [
 
 export default function PressFeatures() {
   return (
-    <section className="bg-[#f5f5f5] py-16 overflow-hidden">
+    <section className="bg-gradient-testimonial py-16 overflow-hidden">
       <div className="container mx-auto px-4">
         <div className="max-w-3xl mx-auto text-center mb-16">
-          <h2 className="text-4xl font-bold text-[#2f3857] mb-4 tracking-tight uppercase font-['Helvetica Neue']">
-            MEDIA APPEARANCES
+          <h2 className="heading-lg text-[#2f3857] mb-4">
+            Media Appearances
           </h2>
-          <p className="text-[#c8b6a6] text-2xl font-bold uppercase tracking-tight mb-16">
+          <p className="text-[#c8b6a6] subheading mb-16">
             Alex's transformative approach has earned him frequent recognition in leading media outlets.
           </p>
         </div>
@@ -48,7 +48,7 @@ export default function PressFeatures() {
               className="group relative"
             >
               <div 
-                className="relative aspect-video bg-white rounded-xl shadow-lg overflow-hidden transform transition-all duration-500 group-hover:scale-105 group-hover:shadow-[0_20px_50px_rgba(0,0,0,0.3)]"
+                className="relative aspect-video bg-white rounded-xl shadow-lg overflow-hidden transform transition-all duration-500 group-hover:scale-105 group-hover:shadow-[0_20px_50px_rgba(0,0,0,0.3)] image-gradient-overlay"
                 style={{
                   transform: `rotate(${index % 2 === 0 ? '2deg' : '-2deg'})`,
                 }}

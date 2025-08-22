@@ -192,8 +192,8 @@ export default function CheckoutForm() {
           <button 
             type="submit"
             disabled={loading}
-            className={`w-full bg-[#fd7f4f] text-white py-4 px-6 rounded-xl font-bold text-xl transition-all duration-300 shadow-lg hover:shadow-xl hover:bg-[#ff8a5f] ${
-              loading ? 'opacity-70 cursor-not-allowed' : 'pulse-on-hover'
+            className={`w-full text-white py-4 px-6 rounded-xl font-bold text-xl ${
+              loading ? 'opacity-70 cursor-not-allowed bg-[#fd7f4f]' : 'vibrant-cta gentle-bounce'
             }`}
           >
             {loading ? 'Processing...' : 'Start your clarity journey today'}
