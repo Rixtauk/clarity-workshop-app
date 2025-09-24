@@ -173,7 +173,7 @@ export default function Hero() {
         </motion.div>
       </div>
       
-      <div className="absolute bottom-0 left-0 right-0 h-1 bg-[#2f3857]" />
+      <div className="absolute bottom-0 left-0 right-0 h-1 bg-brand-navy" />
     </section>
   );
 }

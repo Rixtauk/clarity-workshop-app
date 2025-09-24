@@ -7,6 +7,9 @@ export async function createCheckoutSession(
   fullName?: string // Add fullName parameter
 ) {
   try {
+    if (!supabase) {
+      throw new Error('Supabase is not configured. Checkout is unavailable.');
+    }
     const { data: sessionData, error } = await supabase.auth.getSession();
     
     if (error || !sessionData.session) {
@@ -53,6 +56,9 @@ export async function createCheckoutSession(
 
 export async function getUserSubscription() {
   try {
+    if (!supabase) {
+      return null;
+    }
     const { data, error } = await supabase
       .from('stripe_user_subscriptions')
       .select('*')
@@ -71,6 +77,9 @@ export async function getUserSubscription() {
 
 export async function getUserOrders() {
   try {
+    if (!supabase) {
+      return [];
+    }
     const { data, error } = await supabase
       .from('stripe_user_orders')
       .select('*')

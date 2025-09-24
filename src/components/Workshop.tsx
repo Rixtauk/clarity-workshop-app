@@ -16,7 +16,7 @@ export default function Workshop() {
   ];
 
   return (
-    <section className="bg-[#2f3857] text-white py-16">
+    <section className="bg-brand-navy text-white py-16">
       <div className="container mx-auto px-4">
         <h2 className="heading-lg text-center mb-4">
           Is This Workshop Right for You?

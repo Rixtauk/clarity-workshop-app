@@ -58,7 +58,7 @@ export default function FAQ() {
   };
 
   return (
-    <section className="bg-[#2f3857] py-24 overflow-hidden">
+    <section className="bg-brand-navy py-24 overflow-hidden">
       <div className="container mx-auto px-4">
         <motion.h2 
           ref={titleAnimation.ref}

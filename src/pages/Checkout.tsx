@@ -21,6 +21,10 @@ export default function Checkout() {
 
   useEffect(() => {
     async function checkUserAndOrders() {
+      if (!supabase) {
+        setLoading(false);
+        return;
+      }
       try {
         const { data: { user }, error } = await supabase.auth.getUser();
         
@@ -53,6 +57,20 @@ export default function Checkout() {
     
     checkUserAndOrders();
   }, [navigate]);
+
+  if (!supabase) {
+    return (
+      <div className="min-h-screen bg-[#f5f5f5] flex items-center justify-center px-6 text-center">
+        <div className="max-w-xl">
+          <h2 className="text-2xl font-semibold text-[#2f3857] mb-3">Checkout temporarily unavailable</h2>
+          <p className="text-gray-600">
+            Supabase credentials are not configured in this environment, so authentication and checkout are disabled. 
+            Please provide `VITE_SUPABASE_URL` and `VITE_SUPABASE_ANON_KEY` values in your `.env` file and rebuild the container to enable purchase flows.
+          </p>
+        </div>
+      </div>
+    );
+  }
 
   if (loading) {
     return (

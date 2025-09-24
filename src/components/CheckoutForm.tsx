@@ -16,14 +16,17 @@ export default function CheckoutForm() {
     e.preventDefault();
     setLoading(true);
     setError(null);
-    
+
     if (!fullName || !email) {
       setError('Please provide both your name and email');
       setLoading(false);
       return;
     }
-    
+
     try {
+      if (!supabase) {
+        throw new Error('Checkout is temporarily unavailable. Supabase credentials are not configured.');
+      }
       // Check if user is logged in
       const { data: { session }, error: sessionError } = await supabase.auth.getSession();
       
@@ -60,10 +63,10 @@ export default function CheckoutForm() {
         
         const securePassword = generateSecurePassword();
         
-        try {
-          // Directly attempt to sign up the user
-          console.log("Creating new user account with full name:", fullName);
-          const { error: signUpError } = await supabase.auth.signUp({
+       try {
+         // Directly attempt to sign up the user
+         console.log("Creating new user account with full name:", fullName);
+         const { error: signUpError } = await supabase.auth.signUp({
             email,
             password: securePassword,
             options: {
@@ -104,7 +107,7 @@ export default function CheckoutForm() {
           }
           throw err;
         }
-      } else {
+     } else {
         // If logged in, update the user metadata to ensure name is stored
         const { error: updateError } = await supabase.auth.updateUser({
           data: { full_name: fullName }

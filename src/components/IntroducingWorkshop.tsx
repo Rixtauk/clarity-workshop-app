@@ -183,7 +183,7 @@ export default function IntroducingWorkshop() {
                   icon="check"
                   delay={1000}
                 />
-                <div className="bg-[#2f3857] p-6 rounded-xl text-white shadow-lg hover-lift relative overflow-hidden transform transition-all duration-500 hover:shadow-2xl hover:-translate-y-1">
+                <div className="bg-brand-navy p-6 rounded-xl text-white shadow-lg hover-lift relative overflow-hidden transform transition-all duration-500 hover:shadow-2xl hover:-translate-y-1">
                   {/* Animated background particles */}
                   <div className="absolute inset-0 opacity-10 pointer-events-none">
                     <div className="particle particle-1"></div>
@@ -207,7 +207,7 @@ export default function IntroducingWorkshop() {
             </motion.div>
           </div>
           
-          <div className="bg-[#2f3857] text-white p-8 md:p-12 rounded-2xl shadow-[0_20px_50px_rgba(0,_0,_0,_0.2)] transform hover:-translate-y-1 transition-all duration-500 mt-16 gradient-overlay-navy">
+          <div className="bg-brand-navy text-white p-8 md:p-12 rounded-2xl shadow-[0_20px_50px_rgba(0,_0,_0,_0.2)] transform hover:-translate-y-1 transition-all duration-500 mt-16 gradient-overlay-navy">
             <p className="subheading mb-8">
               This isn't just another course or podcast. This is a transformative experience that combines thousands of executive coaching hours into a clear framework.
             </p>

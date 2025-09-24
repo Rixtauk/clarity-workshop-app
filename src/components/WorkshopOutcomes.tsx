@@ -81,7 +81,7 @@ export default function WorkshopOutcomes() {
                     className="bg-white rounded-xl p-8 shadow-lg hover:shadow-xl transition-all duration-500 hover:-translate-y-1 group hover-tilt gpu-accelerated"
                   >
                     <div className="mb-4 flex justify-center">
-                      <div className="w-12 h-12 rounded-full bg-[#2f3857] flex items-center justify-center transform group-hover:scale-110 transition-all duration-300 animate-bounce-in">
+                      <div className="w-12 h-12 rounded-full bg-brand-navy flex items-center justify-center transform group-hover:scale-110 transition-all duration-300 animate-bounce-in">
                         <outcome.icon className="w-6 h-6 text-white" />
                       </div>
                     </div>

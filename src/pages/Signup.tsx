@@ -9,6 +9,7 @@ export default function Signup() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const navigate = useNavigate();
+  const supabaseAvailable = Boolean(supabase);
 
   const handleSignup = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -16,6 +17,9 @@ export default function Signup() {
     setError(null);
 
     try {
+      if (!supabase) {
+        throw new Error('Supabase is not configured. Sign up is unavailable in this environment.');
+      }
       const { error } = await supabase.auth.signUp({
         email,
         password,
@@ -61,6 +65,13 @@ export default function Signup() {
             <h1 className="text-3xl font-bold text-[#2f3857] mb-6 tracking-tight font-['Helvetica Neue'] text-center">
               CREATE ACCOUNT
             </h1>
+
+            {!supabaseAvailable && (
+              <div className="mb-6 bg-amber-50 text-amber-800 p-4 rounded-lg flex items-start gap-3">
+                <AlertCircle className="w-5 h-5 flex-shrink-0 mt-0.5" />
+                <span>Supabase credentials are not configured, so account creation is disabled. Add `VITE_SUPABASE_URL` and `VITE_SUPABASE_ANON_KEY` to `.env` and rebuild to enable sign up.</span>
+              </div>
+            )}
 
             {error && (
               <div className="mb-6 bg-red-50 text-red-700 p-4 rounded-lg flex items-start gap-3">
@@ -112,7 +123,7 @@ export default function Signup() {
                 type="submit"
                 disabled={loading}
                 className={`w-full text-white py-3 px-6 rounded-lg font-bold text-lg ${
-                  loading ? 'opacity-70 cursor-not-allowed bg-[#2f3857]' : 'dark-cta gentle-bounce'
+                  loading ? 'opacity-70 cursor-not-allowed bg-brand-navy' : 'dark-cta gentle-bounce'
                 }`}
               >
                 {loading ? 'Creating account...' : 'Create Account'}

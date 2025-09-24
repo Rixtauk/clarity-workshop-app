@@ -860,7 +860,7 @@
   }
   
   /* Trigger shimmer on parent hover */
-  .bg-\[#2f3857\]:hover .stat-shimmer,
+  .bg-brand-navy:hover .stat-shimmer,
   .bg-slate-800:hover .stat-shimmer {
     animation: stat-shimmer 0.8s ease-out;
   }

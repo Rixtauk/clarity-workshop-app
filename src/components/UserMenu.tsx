@@ -11,6 +11,11 @@ export default function UserMenu() {
   const navigate = useNavigate();
 
   useEffect(() => {
+    if (!supabase) {
+      setLoading(false);
+      return;
+    }
+
     async function getUser() {
       try {
         const { data, error } = await supabase.auth.getUser();
@@ -62,7 +67,7 @@ export default function UserMenu() {
     });
 
     return () => {
-      authListener.subscription.unsubscribe();
+      authListener?.subscription.unsubscribe();
     };
   }, []);
 
@@ -89,6 +94,10 @@ export default function UserMenu() {
     }
   };
 
+  if (!supabase) {
+    return null;
+  }
+
   if (loading) {
     return (
       <div className="w-8 h-8 rounded-full bg-gray-200 animate-pulse"></div>
@@ -99,7 +108,7 @@ export default function UserMenu() {
     <div className="relative" ref={menuRef}>
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="flex items-center justify-center w-10 h-10 rounded-full bg-[#2f3857] text-white hover:bg-[#3b435d] transition-colors"
+        className="flex items-center justify-center w-10 h-10 rounded-full bg-brand-navy text-white hover:bg-brand-navy-dark transition-colors"
         aria-label={user ? "Account menu" : "Login/Signup menu"}
       >
         {user ? (

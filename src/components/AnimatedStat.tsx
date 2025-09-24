@@ -146,7 +146,7 @@ export default function AnimatedStat({
     <div 
       ref={elementRef}
       className={`
-        bg-[#2f3857] p-6 rounded-xl text-white transform transition-all duration-500
+        bg-brand-navy p-6 rounded-xl text-white transform transition-all duration-500
         shadow-lg hover:shadow-2xl hover-tilt gpu-accelerated relative overflow-hidden
         ${isCompleted ? 'animate-completion-glow' : ''}
         ${hasAnimated ? 'hover:-translate-y-2' : ''}

@@ -105,7 +105,7 @@ export default function ImageSlider({ image, alt }: ImageSliderProps) {
         }}
       >
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-8 h-8 bg-white rounded-full shadow-lg flex items-center justify-center">
-          <div className="w-6 h-6 rounded-full bg-[#2f3857]" />
+          <div className="w-6 h-6 rounded-full bg-brand-navy" />
         </div>
       </div>
     </div>

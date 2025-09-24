@@ -43,7 +43,7 @@ export default function WorkshopIntro() {
   ];
 
   return (
-    <section className="bg-[#2f3857] text-white py-12">
+    <section className="bg-brand-navy text-white py-12">
       <div className="container mx-auto px-4">
         <div className="max-w-3xl mx-auto text-center mb-16">
           <h2 className="heading-lg text-white mb-4">

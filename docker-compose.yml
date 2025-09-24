@@ -1,0 +1,10 @@
+services:
+  clarity-web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "${APP_PORT:-4173}:4173"
+    environment:
+      - NODE_ENV=production
+    restart: unless-stopped

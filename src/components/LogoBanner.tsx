@@ -29,7 +29,7 @@ const logos = [
 
 export default function LogoBanner() {
   return (
-    <div className="bg-[#2f3857] py-12 overflow-hidden relative">
+    <div className="bg-brand-navy py-12 overflow-hidden relative">
       <div className="flex space-x-16 animate-scroll">
         {[...logos, ...logos].map((logo, index) => (
           <div

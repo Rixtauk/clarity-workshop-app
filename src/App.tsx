@@ -1,19 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
-import Hero from './components/Hero';
-import LogoBanner from './components/LogoBanner';
-import StorySelling from './components/StorySelling';
-import IntroducingWorkshop from './components/IntroducingWorkshop';
-import Testimonials from './components/Testimonials';
-import WorkshopOutcomes from './components/WorkshopOutcomes';
-import WorkshopIntro from './components/WorkshopIntro';
-import Coach from './components/Coach';
-import PressFeatures from './components/PressFeatures';
-import Workshop from './components/Workshop';
-import Reviews from './components/Reviews';
-import Purchase from './components/Purchase';
-import FAQ from './components/FAQ';
-import Footer from './components/Footer';
+import LandingPage from './components/LandingPage';
 import Checkout from './pages/Checkout';
 import Success from './pages/Success';
 import Login from './pages/Login';
@@ -82,23 +69,11 @@ function HomePage() {
 
   return (
     <div className="min-h-screen bg-white">
-      <div className="absolute top-8 right-8 z-10">
+      <div className="absolute top-6 right-6 z-20">
         <UserMenu />
       </div>
-      <Hero />
-      <LogoBanner />
-      <StorySelling />
-      <IntroducingWorkshop />
-      <WorkshopOutcomes />
-      <Reviews />
-      <WorkshopIntro />
-      <Coach />
-      <PressFeatures />
-      <Workshop />
-      <Purchase />
-      <FAQ />
-      <Footer />
-      
+      <LandingPage />
+
       <ExitPopup isOpen={showExitPopup} onClose={() => setShowExitPopup(false)} />
     </div>
   );

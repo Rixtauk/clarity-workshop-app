@@ -62,6 +62,23 @@ export default function Success() {
 
   useEffect(() => {
     async function checkUserAndOrders() {
+      if (!supabase) {
+        const savedName = localStorage.getItem('checkout_name');
+        const savedEmail = localStorage.getItem('checkout_email');
+
+        if (savedName) {
+          setFullName(savedName);
+        }
+
+        if (savedEmail) {
+          setEmail(savedEmail);
+        }
+
+        setWebhookSent(true);
+        setLoading(false);
+        return;
+      }
+
       try {
         const { data: { user }, error } = await supabase.auth.getUser();
         
@@ -187,7 +204,7 @@ export default function Success() {
                 
                 <div className="space-y-4 text-left mb-8">
                   <div className="flex items-start gap-3">
-                    <div className="bg-[#2f3857] rounded-full p-1 text-white flex-shrink-0 mt-1">
+                    <div className="bg-brand-navy rounded-full p-1 text-white flex-shrink-0 mt-1">
                       <Check className="w-4 h-4" />
                     </div>
                     <span className="text-gray-700">
@@ -196,7 +213,7 @@ export default function Success() {
                   </div>
                   
                   <div className="flex items-start gap-3">
-                    <div className="bg-[#2f3857] rounded-full p-1 text-white flex-shrink-0 mt-1">
+                    <div className="bg-brand-navy rounded-full p-1 text-white flex-shrink-0 mt-1">
                       <Check className="w-4 h-4" />
                     </div>
                     <span className="text-gray-700">
@@ -205,7 +222,7 @@ export default function Success() {
                   </div>
                   
                   <div className="flex items-start gap-3">
-                    <div className="bg-[#2f3857] rounded-full p-1 text-white flex-shrink-0 mt-1">
+                    <div className="bg-brand-navy rounded-full p-1 text-white flex-shrink-0 mt-1">
                       <Check className="w-4 h-4" />
                     </div>
                     <span className="text-gray-700">
@@ -214,7 +231,7 @@ export default function Success() {
                   </div>
                   
                   <div className="flex items-start gap-3">
-                    <div className="bg-[#2f3857] rounded-full p-1 text-white flex-shrink-0 mt-1">
+                    <div className="bg-brand-navy rounded-full p-1 text-white flex-shrink-0 mt-1">
                       <Check className="w-4 h-4" />
                     </div>
                     <span className="text-gray-700">

@@ -62,7 +62,7 @@ export default function PressFeatures() {
                   href={clipping.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="absolute bottom-4 right-4 bg-[#2f3857] p-3 rounded-full opacity-0 group-hover:opacity-100 transition-all duration-300 hover:bg-[#3b435d] transform translate-y-4 group-hover:translate-y-0 hover:scale-110 shadow-lg"
+                  className="absolute bottom-4 right-4 bg-brand-navy p-3 rounded-full opacity-0 group-hover:opacity-100 transition-all duration-300 hover:bg-brand-navy-dark transform translate-y-4 group-hover:translate-y-0 hover:scale-110 shadow-lg"
                 >
                   <ExternalLink className="w-5 h-5 text-white" />
                 </a>

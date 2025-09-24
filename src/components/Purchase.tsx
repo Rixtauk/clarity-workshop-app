@@ -23,7 +23,7 @@ export default function Purchase() {
     <section id="pricing" className="bg-gradient-section-light py-24">
       <div className="container mx-auto px-4">
         <div className="max-w-4xl mx-auto text-center transform hover:-translate-y-2 transition-all duration-500">
-          <div className="bg-[#2f3857] text-white p-12 rounded-2xl shadow-[0_20px_50px_rgba(0,_0,_0,_0.3)] hover:shadow-[0_30px_60px_rgba(0,_0,_0,_0.4)] transition-all duration-500 gradient-overlay-navy">
+          <div className="bg-brand-navy text-white p-12 rounded-2xl shadow-[0_20px_50px_rgba(0,_0,_0,_0.3)] hover:shadow-[0_30px_60px_rgba(0,_0,_0,_0.4)] transition-all duration-500 gradient-overlay-navy">
             {/* Title and Image Row */}
             <div className="flex flex-col md:flex-row gap-8 items-start mb-8">
               {/* Left: Title and Price */}

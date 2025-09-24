@@ -11,6 +11,7 @@ export default function Login() {
   const [success, setSuccess] = useState<string | null>(null);
   const navigate = useNavigate();
   const location = useLocation();
+  const supabaseAvailable = Boolean(supabase);
 
   // Check if there's a success message in the location state
   useEffect(() => {
@@ -25,6 +26,9 @@ export default function Login() {
     setError(null);
 
     try {
+      if (!supabase) {
+        throw new Error('Supabase is not configured. Log in is unavailable in this environment.');
+      }
       const { data, error } = await supabase.auth.signInWithPassword({
         email,
         password,
@@ -64,6 +68,13 @@ export default function Login() {
             <h1 className="text-3xl font-bold text-[#2f3857] mb-6 tracking-tight font-['Helvetica Neue'] text-center">
               LOG IN
             </h1>
+
+            {!supabaseAvailable && (
+              <div className="mb-6 bg-amber-50 text-amber-800 p-4 rounded-lg flex items-start gap-3">
+                <AlertCircle className="w-5 h-5 flex-shrink-0 mt-0.5" />
+                <span>Supabase credentials are not configured, so authentication is disabled. Add `VITE_SUPABASE_URL` and `VITE_SUPABASE_ANON_KEY` to your `.env` file and rebuild to enable login.</span>
+              </div>
+            )}
 
             {error && (
               <div className="mb-6 bg-red-50 text-red-700 p-4 rounded-lg flex items-start gap-3">
@@ -120,7 +131,7 @@ export default function Login() {
                 type="submit"
                 disabled={loading}
                 className={`w-full text-white py-3 px-6 rounded-lg font-bold text-lg ${
-                  loading ? 'opacity-70 cursor-not-allowed bg-[#2f3857]' : 'dark-cta gentle-bounce'
+                  loading ? 'opacity-70 cursor-not-allowed bg-brand-navy' : 'dark-cta gentle-bounce'
                 }`}
               >
                 {loading ? 'Logging in...' : 'Log In'}

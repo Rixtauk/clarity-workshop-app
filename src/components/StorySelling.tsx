@@ -91,7 +91,7 @@ export default function StorySelling() {
             <motion.div 
               ref={storyBlocks[5].ref}
               {...storyBlocks[5].motionProps}
-              className="bg-[#2f3857] p-8 rounded-xl text-center max-w-2xl mx-auto shadow-xl gradient-overlay-navy hover-gradient-lift hover-tilt gpu-accelerated"
+              className="bg-brand-navy p-8 rounded-xl text-center max-w-2xl mx-auto shadow-xl gradient-overlay-navy hover-gradient-lift hover-tilt gpu-accelerated"
             >
               <p className="heading-md font-light mb-4">
                 If you're feeling stuck or unfulfilled, you're not alone.
